@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>GenAI RAG Assistant</title>
+
+<style>
+body{
+font-family:Arial;
+background:linear-gradient(120deg,#1e5799,#00c6ff);
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+margin:0;
+}
+
+.container{
+background:white;
+padding:30px;
+border-radius:12px;
+width:500px;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+h1{
+text-align:center;
+margin-bottom:20px;
+}
+
+.input-box{
+display:flex;
+gap:10px;
+}
+
+input{
+flex:1;
+padding:12px;
+border:1px solid #ccc;
+border-radius:6px;
+font-size:16px;
+}
+
+button{
+padding:12px 20px;
+background:#2e7d32;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+button:hover{
+background:#1b5e20;
+}
+
+#response{
+margin-top:20px;
+font-size:16px;
+color:#333;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>GenAI RAG Assistant</h1>
+
+<div class="input-box">
+
+<input id="question" placeholder="Ask something..." />
+
+<button onclick="ask()">Ask</button>
+
+</div>
+
+<div id="response">
+Response will appear here...
+</div>
+
+</div>
+
+<script>
+
+async function ask(){
+
+const question=document.getElementById("question").value
+
+document.getElementById("response").innerText="Loading..."
+
+const response=await fetch("http://127.0.0.1:8000/api/chat",{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({
+sessionId:"abc123",
+message:question
+})
+})
+
+const data=await response.json()
+
+document.getElementById("response").innerText=data.reply
+
+}
+
+</script>
+
+</body>
+</html>

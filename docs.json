@@ -1,0 +1,22 @@
+[
+{
+"title": "Reset Password",
+"content": "Users can reset their password from Settings > Security."
+},
+{
+"title": "Change Email",
+"content": "Users can change their email address from Profile Settings."
+},
+{
+"title": "Manage Billing",
+"content": "Users can manage their subscription in Billing Settings."
+},
+{
+"title": "Update Profile",
+"content": "Users can update their personal information from Profile Settings."
+},
+{
+"title": "Delete Account",
+"content": "Users can request account deletion by contacting support."
+}
+]
